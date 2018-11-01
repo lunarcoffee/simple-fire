@@ -39,10 +39,7 @@ int main() {
     const int COLS = w.ws_col;
     
     // Holds integers representing the strength of the fire at each cell.
-    vector<vector<int>> sc(ROWS);
-    for (int i = 0; i < ROWS; ++i) {
-        sc[i] = vector<int>(ROWS);
-    }
+    vector<vector<int>> sc(ROWS, vector<int>(COLS));
     
     while (true) {
         // Set new values for the base of the fire.
