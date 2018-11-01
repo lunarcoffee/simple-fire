@@ -5,32 +5,30 @@
 #include <chrono>
 #include <sys/ioctl.h>
 #include <unistd.h>
-
+ 
 using std::cout;
 using std::vector;
-
+ 
 void tick(vector<vector<int>> &sc, int rows, int cols) {
     // Display the corresponding color/character for each cell in the fire matrix.
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            int temp = sc[i][j];
+            // Fire strength values and their corresponding colors/characters.
+            int strengths[] = {70, 64, 56, 50, 44, 40, 34, -1};
+            std::string fires[] = {"33;1m#", "33;1m&", "31m%", "31m+", "30;1m*", "30;1m:", "30;1m.", "1m "};
             
-            // Yellow for strong fire, red for medium, grey for weak.
-            if (temp > 54) {
-                cout << "\033[33;1m@";
-            } else if (temp > 36) {
-                cout << "\033[31m?";
-            } else if (temp > 20) {
-                cout << "\033[30;1m*";
-            } else {
-                cout << " ";
+            // Find the currrent strength value's color/character and display it.
+            for (int k = 0; k < 8; ++k) {
+                if (sc[i][j] > strengths[k]) {
+                    cout << "\033[" + fires[k];
+                    break;
+                }
             }
         }
-        // Flush each row.
         cout << "\n";
     }
 }
-
+ 
 int main() {
     struct winsize w;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
@@ -60,7 +58,7 @@ int main() {
         }
         
         // Wait and display the new fire.
-        std::this_thread::sleep_for(std::chrono::milliseconds(40));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
         tick(sc, ROWS, COLS);
     }
 }
