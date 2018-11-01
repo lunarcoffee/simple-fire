@@ -56,7 +56,7 @@ int main() {
         }
         
         // Wait and display the new fire.
-        std::this_thread::sleep_for(std::chrono::milliseconds(40));
+        std::this_thread::sleep_for(std::chrono::milliseconds(60));
         tick(sc, ROWS, COLS);
     }
 }
