@@ -16,7 +16,7 @@ void tick(vector<vector<int>> &sc, int rows, int cols) {
         for (int j = 0; j < cols; ++j) {
             // Fire strength values and their corresponding colors/characters.
             int strengths[] = {70, 64, 56, 50, 44, 40, 34, -1};
-            std::string fires[] = {"33;1m%", "33;1m&", "31m%", "31m*", "30;1m+", "30;1m:", "30;1m.", "1m "};
+            std::string fires[] = {"33;1m%", "33;1m&", "31m$", "31m*", "30;1m+", "30;1m:", "30;1m.", "1m "};
             
             // Find the currrent strength value's color/character and display it.
             for (int k = 0; k < 8; ++k) {
