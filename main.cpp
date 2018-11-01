@@ -60,4 +60,3 @@ int main() {
         tick(sc, ROWS, COLS);
     }
 }
- 
