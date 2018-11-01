@@ -3,6 +3,7 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include <cstdlib>
 #include <sys/ioctl.h>
 #include <unistd.h>
  
@@ -58,7 +59,7 @@ int main() {
         }
         
         // Wait and display the new fire.
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(30));
         tick(sc, ROWS, COLS);
     }
 }
