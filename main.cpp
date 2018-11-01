@@ -15,7 +15,7 @@ void tick(vector<vector<int>> &sc, int rows, int cols) {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
             // Fire strength values and their corresponding colors/characters.
-            int strengths[] = {70, 64, 56, 50, 44, 40, 34, -1};
+            int strengths[] = {68, 64, 56, 50, 44, 40, 34, -1};
             std::string fires[] = {"33;1m%", "33;1m&", "31m$", "31m*", "30;1m+", "30;1m:", "30;1m.", "1m "};
             
             // Find the currrent strength value's color/character and display it.
@@ -56,7 +56,7 @@ int main() {
         }
         
         // Wait and display the new fire.
-        std::this_thread::sleep_for(std::chrono::milliseconds(30));
+        std::this_thread::sleep_for(std::chrono::milliseconds(40));
         tick(sc, ROWS, COLS);
     }
 }
