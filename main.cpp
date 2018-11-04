@@ -12,7 +12,7 @@ using std::vector;
  
 void tick(vector<vector<int>> &sc, int rows, int cols) {
     // Display the corresponding color/character for each cell in the fire matrix.
-    for (int i = 0; i < rows; ++i) {
+    for (int i = 0; i < rows; ++i, cout << "\n") {
         for (int j = 0; j < cols; ++j) {
             // Fire strength values and their corresponding colors/characters.
             int strengths[] = {68, 64, 56, 50, 44, 40, 34, -1};
@@ -26,7 +26,6 @@ void tick(vector<vector<int>> &sc, int rows, int cols) {
                 }
             }
         }
-        cout << "\n";
     }
 }
  
@@ -43,17 +42,14 @@ int main() {
     
     while (true) {
         // Set new values for the base of the fire.
-        for (int i = 0; i < COLS; ++i) {
+        for (int i = 0; i < COLS; ++i)
             sc[ROWS - 1][i] = rand() % 2 ? 18 : 99;
-        }
         
         // Update the plane with new fire strength values.
-        for (int i = 0; i < ROWS - 1; ++i) {
-            for (int j = 1; j < COLS - 1; ++j) {
+        for (int i = 0; i < ROWS - 1; ++i)
+            for (int j = 1; j < COLS - 1; ++j)
                 // Average out the three below the current cell along with the current cell.
                 sc[i][j] = (sc[i][j] + sc[i + 1][j - 1] + sc[i + 1][j] + sc[i + 1][j + 1]) / 4 - 1;
-            }
-        }
         
         // Wait and display the new fire.
         std::this_thread::sleep_for(std::chrono::milliseconds(60));
